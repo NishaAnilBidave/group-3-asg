@@ -1,5 +1,5 @@
 #Security group for Blue server
-resource "aws_security_group" "blue_server" {
+resource "aws_security_group" "blue_server_sg" {
   name        = "blue-server"
   description = "Allow connection for blue server."
   vpc_id      = data.aws_vpc.vpc_group3.id
@@ -34,7 +34,7 @@ resource "aws_security_group" "blue_server" {
 }
 
 #Security group for Green server
-resource "aws_security_group" "green_server" {
+resource "aws_security_group" "green_server_sg" {
   name        = "green-server"
   description = "Allow connection for green server."
   vpc_id      = data.aws_vpc.vpc_group3.id
@@ -61,7 +61,7 @@ resource "aws_security_group" "green_server" {
 }
 
 #Security group for Bastio Host server
-resource "aws_security_group" "bastion_host_server" {
+resource "aws_security_group" "bastion_host_server_sg" {
   name        = "bastion-host-server"
   description = "Allow connection for bastion host server."
   vpc_id      = data.aws_vpc.vpc_group3.id
