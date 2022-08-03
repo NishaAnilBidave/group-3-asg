@@ -15,7 +15,7 @@ resource "aws_lb" "group_3_lb" {
 #   }
 
   tags = {
-    Environment = "group_3_production"
+    Environment = "group_3_lb"
   }
 }
 

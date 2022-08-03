@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "blue" {
-  name     = "blue-tg-${random_pet.app.id}-lb"
+  name     = "blue-tg-lb"
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.vpc_group3.id
@@ -22,7 +22,8 @@ resource "aws_lb_target_group_attachment" "blue" {
 # for green target group
 
 resource "aws_lb_target_group" "green" {
-  name     = "green-tg-${random_pet.app.id}-lb"
+  # name     = "green-tg-${random_pet.app.id}-lb"
+  name     = "green-tg-lb"
   port     = 80
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.vpc_group3.id
