@@ -11,3 +11,10 @@ data "aws_subnet" "public_a" {
     values = ["public_a"]
   }
 }
+
+data "aws_subnet" "public_b" {
+  filter {
+    name   = "tag:Name"
+    values = ["public_b"]
+  }
+}

@@ -1,10 +1,10 @@
 resource "aws_launch_configuration" "asg_launch" {
   name_prefix     = "asg-launch"
-#   image_id        = data.aws_ami.amazon-linux.id
+  image_id        = "ami-068257025f72f470d"
   instance_type   = "t3.small"
 #   user_data       = file("user-data.sh")
   security_groups = [aws_security_group.server_sg.id]
-  total_local_storage_gb = 10
+  # total_local_storage_gb = 10
 
   lifecycle {
     create_before_destroy = true
