@@ -41,4 +41,3 @@ resource "aws_lb_target_group_attachment" "green" {
   target_id        = aws_instance.green[count.index].id
   port             = 80
 }
-»

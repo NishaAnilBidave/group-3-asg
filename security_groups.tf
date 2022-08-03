@@ -33,32 +33,32 @@ resource "aws_security_group" "server_sg" {
   }
 }
 
-#Security group for Green server
-# resource "aws_security_group" "green_server_sg" {
-#   name        = "green-server"
-#   description = "Allow connection for green server."
-#   vpc_id      = data.aws_vpc.vpc_group3.id
+#Security group for load balancers
+resource "aws_security_group" "lb_sg" {
+  name        = "lb-server"
+  description = "Allow connection for load balancers."
+  vpc_id      = data.aws_vpc.vpc_group3.id
 
-#   ingress {
-#     description      = "Allow port 22"
-#     from_port        = 22
-#     to_port          = 22
-#     protocol         = "tcp"
-#     cidr_blocks      = ["172.168.0.0/16"]
-#   }
+  ingress {
+    description      = "Allow port 22"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["172.168.0.0/16"]
+  }
 
-#   egress {
-#     from_port        = 0
-#     to_port          = 0
-#     protocol         = "-1"
-#     cidr_blocks      = ["0.0.0.0/0"]
-#     ipv6_cidr_blocks = ["::/0"]
-#   }
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 
-#   tags = {
-#     Name = "green-server"
-#   }
-# }
+  tags = {
+    Name = "lb-server"
+  }
+}
 
 #Security group for Bastio Host server
 resource "aws_security_group" "bastion_host_server_sg" {

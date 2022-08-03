@@ -2,7 +2,7 @@ resource "aws_lb" "group_3_lb" {
   name               = "group-3-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.server_sg.id]
+  security_groups    = [aws_security_group.lb_sg.id]
   subnets            = [data.aws_subnet.public_a.id]
   vpc_id             = data.aws_vpc.vpc_group3.id
 
