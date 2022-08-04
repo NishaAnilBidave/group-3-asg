@@ -1,15 +1,13 @@
 resource "aws_launch_configuration" "asg_launch" {
-  name_prefix     = "asg-launch"
-  image_id        = "ami-068257025f72f470d"
-  instance_type   = "t3.small"
+  name_prefix   = "asg-launch"
+  image_id      = "ami-068257025f72f470d"
+  instance_type = "t3.small"
   # user_data       = file("user_data.sh")
   security_groups = [aws_security_group.lb_sg.id, aws_security_group.bastion_host_server_sg.id]
-  key_name = "bastion_host_key"
-  # vpc_id          = data.aws_vpc.vpc_group3.id
-  # total_local_storage_gb = 10
+  key_name        = "bastion_host_key"
   root_block_device {
-    volume_type = "gp2"
-    volume_size = 10
+    volume_type           = "gp2"
+    volume_size           = 10
     delete_on_termination = true
   }
 
@@ -24,8 +22,7 @@ resource "aws_autoscaling_group" "blue_asg" {
   max_size             = 2
   desired_capacity     = 2
   launch_configuration = aws_launch_configuration.asg_launch.name
-  vpc_zone_identifier = [data.aws_subnet.private_a.id, data.aws_subnet.private_b.id]
-  # availability_zones = ["ap-south-1a", "ap-south-1b"]
+  vpc_zone_identifier  = [data.aws_subnet.private_a.id, data.aws_subnet.private_b.id]
 }
 
 #autoscaling group - green
@@ -34,6 +31,6 @@ resource "aws_autoscaling_group" "green_asg" {
   max_size             = 2
   desired_capacity     = 2
   launch_configuration = aws_launch_configuration.asg_launch.name
-  vpc_zone_identifier = [data.aws_subnet.private_a.id, data.aws_subnet.private_b.id]
-  # availability_zones = ["ap-south-1a", "ap-south-1b"]
+  vpc_zone_identifier  = [data.aws_subnet.private_a.id, data.aws_subnet.private_b.id]
+
 }
