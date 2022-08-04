@@ -7,6 +7,11 @@ resource "aws_launch_configuration" "asg_launch" {
   key_name = "bastion_host_key"
   # vpc_id          = data.aws_vpc.vpc_group3.id
   # total_local_storage_gb = 10
+  root_block_device {
+    volume_type = "gp2"
+    volume_size = 10
+    delete_on_termination = true
+  }
 
   lifecycle {
     create_before_destroy = true
