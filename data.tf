@@ -32,3 +32,27 @@ data "aws_subnet" "private_b" {
     values = ["private_b"]
   }
 }
+
+data "aws_ami" "ubuntu_blue" {
+  most_recent = true
+  owners           = ["self"]
+
+  filter {
+    name   = "name"
+    values = ["Blue_Ami"]
+  }
+
+  # owners = ["778630672463"] 
+}
+
+data "aws_ami" "ubuntu_green" {
+  most_recent = true
+  owners           = ["self"]
+
+  filter {
+    name   = "name"
+    values = ["Green_Ami"]
+  }
+
+  # owners = ["778630672463"] 
+}
