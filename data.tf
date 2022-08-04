@@ -35,7 +35,7 @@ data "aws_subnet" "private_b" {
 
 data "aws_ami" "ubuntu_blue" {
   most_recent = true
-  owners           = ["self"]
+  owners      = ["self"]
 
   filter {
     name   = "name"
@@ -45,7 +45,7 @@ data "aws_ami" "ubuntu_blue" {
 
 data "aws_ami" "ubuntu_green" {
   most_recent = true
-  owners           = ["self"]
+  owners      = ["self"]
 
   filter {
     name   = "name"

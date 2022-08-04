@@ -5,19 +5,19 @@ resource "aws_security_group" "server_sg" {
   vpc_id      = data.aws_vpc.vpc_group3.id
 
   ingress {
-    description      = "Allow port 22"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["110.224.205.97/32"]
+    description = "Allow port 22"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["110.224.205.97/32"]
   }
 
   ingress {
-    description      = "Allow port 80"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["110.224.205.97/32"]
+    description = "Allow port 80"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["110.224.205.97/32"]
   }
 
   egress {
@@ -40,11 +40,11 @@ resource "aws_security_group" "lb_sg" {
   vpc_id      = data.aws_vpc.vpc_group3.id
 
   ingress {
-    description      = "Allow port 80"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "Allow port 80"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -67,11 +67,11 @@ resource "aws_security_group" "bastion_host_server_sg" {
   vpc_id      = data.aws_vpc.vpc_group3.id
 
   ingress {
-    description      = "Allow port 22"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "Allow port 22"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
