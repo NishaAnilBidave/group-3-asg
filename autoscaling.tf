@@ -2,7 +2,7 @@ resource "aws_launch_configuration" "asg_launch_blue" {
   name_prefix     = "asg-launch-blue"
   image_id        = data.aws_ami.ubuntu_blue.id
   instance_type   = "t3.small"
-  # user_data       = file("user_data.sh")
+  user_data       = "./user-data.sh"
   security_groups = [aws_security_group.lb_sg.id, aws_security_group.bastion_host_server_sg.id]
   key_name = "asg_key"
   
