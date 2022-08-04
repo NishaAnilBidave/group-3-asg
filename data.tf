@@ -38,7 +38,7 @@ data "aws_ami" "ubuntu_blue" {
   owners           = ["self"]
 
   filter {
-    name   = "AMI_name"
+    name   = "name"
     values = ["Blue_Ami-*"]
   }
 }
@@ -48,7 +48,7 @@ data "aws_ami" "ubuntu_green" {
   owners           = ["self"]
 
   filter {
-    name   = "AMI_name"
+    name   = "name"
     values = ["Green_Ami-*"]
   }
 }
