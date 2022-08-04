@@ -2,7 +2,7 @@ name: ASG deployment in AWS
 on:
   push:
     branches:
-      githubactions_asg
+      main
 jobs:
   terraform-deploy:
     runs-on: ubuntu-latest
