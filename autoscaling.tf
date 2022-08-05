@@ -31,7 +31,7 @@ resource "aws_launch_configuration" "asg_launch_green" {
     sudo systemctl enable nginx.service
     EOF
   security_groups = [aws_security_group.server_sg.id]
-  key_name        = "bastion_host_key"
+  key_name        = "asg_key"
 
   root_block_device {
     volume_type           = "gp2"
@@ -50,7 +50,13 @@ resource "aws_autoscaling_group" "blue_asg" {
   max_size             = 2
   desired_capacity     = 2
   launch_configuration = aws_launch_configuration.asg_launch_blue.name
-  vpc_zone_identifier  = [data.aws_subnet.private_a.id]
+  vpc_zone_identifier  = [data.aws_subnet.private_a.id, data.aws_subnet.private_b.id]
+
+  tag {
+    key                 = "name"
+    value               = "Blue Deployment"
+    propagate_at_launch = true
+  }
 }
 
 #autoscaling group - green
@@ -59,5 +65,11 @@ resource "aws_autoscaling_group" "green_asg" {
   max_size             = 2
   desired_capacity     = 2
   launch_configuration = aws_launch_configuration.asg_launch_green.name
-  vpc_zone_identifier  = [data.aws_subnet.private_b.id]
+  vpc_zone_identifier  = [data.aws_subnet.private_a.id, data.aws_subnet.private_b.id]
+
+  tag {
+    key                 = "name"
+    value               = "Green Deployment"
+    propagate_at_launch = true
+  }
 }
