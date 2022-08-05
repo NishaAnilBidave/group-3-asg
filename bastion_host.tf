@@ -1,5 +1,5 @@
 resource "aws_instance" "Bastion_Host" {
-  ami           = "ami-068257025f72f470d"
+  ami           = data.aws_ami.bastion_host_ami.id
   instance_type = "t2.micro"
 
   #VPC
@@ -10,7 +10,7 @@ resource "aws_instance" "Bastion_Host" {
   subnet_id = data.aws_subnet.public_a.id
 
   tags = {
-    Name = "Bastion_host_subnet"
+    Name = "Bastion_host"
   }
 
 }
