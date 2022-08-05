@@ -7,7 +7,7 @@ resource "aws_launch_configuration" "asg_launch_blue" {
     sudo service nginx start
     sudo systemctl enable nginx.service
     EOF
-  security_groups = [aws_security_group.lb_sg.id, aws_security_group.bastion_host_server_sg.id]
+  security_groups = [aws_security_group.server_sg.id]
   key_name        = "asg_key"
 
   root_block_device {
@@ -30,7 +30,7 @@ resource "aws_launch_configuration" "asg_launch_green" {
     sudo service nginx start
     sudo systemctl enable nginx.service
     EOF
-  security_groups = [aws_security_group.lb_sg.id, aws_security_group.bastion_host_server_sg.id]
+  security_groups = [aws_security_group.server_sg.id]
   key_name        = "bastion_host_key"
 
   root_block_device {
